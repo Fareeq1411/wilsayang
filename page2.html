@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Website - Second Page</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        /* Background video */
+        .background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+
+<video class="background-video" autoplay muted>
+    <source src="background-video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+<script>
+    var video = document.querySelector('.background-video');
+
+    video.onended = function() {
+        window.location.href = 'page3.html';  // Redirect to third page when video ends
+    };
+</script>
+
+</body>
+</html>
