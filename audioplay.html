@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Audio Player</title>
+</head>
+<body>
+  <audio id="background-audio" src="audio1.mp3" autoplay loop></audio>
+  <script>
+    // Play audio immediately if session storage indicates prior interaction
+    const audio = document.getElementById('background-audio');
+    if (sessionStorage.getItem('audioAllowed') === 'true') {
+      audio.play().catch((error) => {
+        console.log('Autoplay was prevented:', error);
+      });
+    }
+
+    // Event listener to set session storage when audio can be played
+    window.addEventListener('click', () => {
+      sessionStorage.setItem('audioAllowed', 'true');
+      audio.play().catch((error) => {
+        console.log('Autoplay prevented, waiting for user interaction:', error);
+      });
+    });
+  </script>
+</body>
+</html>
